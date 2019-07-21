@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
-const Song = require("../models/song");
+const SongGet = require("../models/song");
 
 exports.Songs_get_all = (req, res, next) => {
-  Song.find()
+  SongGet.find()
     .select()
     .exec()
     .then(docs => {
       const response = {
         count: docs.length,
-        Songs: docs
+        songs: docs
       };
       //   if (docs.length >= 0) {
       res.status(200).json(response);
@@ -28,14 +28,14 @@ exports.Songs_get_all = (req, res, next) => {
 
 exports.Songs_get_Song = (req, res, next) => {
   const id = req.params.SongId;
-  Song.findById(id)
+  SongGet.findById(id)
     .select()
     .exec()
     .then(doc => {
       console.log("From database", doc);
       if (doc) {
         res.status(200).json({
-          Song: doc,
+          song: doc,
         });
       } else {
         res
