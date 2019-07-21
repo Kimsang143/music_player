@@ -15,8 +15,7 @@ cloudinary.config({
 const storage = cloudinaryStorage({
     cloudinary: cloudinary,
     folder: "music",
-    allowedFormats: ["jpg", "png", "mp3","audio"],
-    transformation: [{ width: 332, height: 499, crop: 'limit' }]
+    allowedFormats: ["jpg", "png", "mp3","audio"]
 });
 
 const upload = multer({ storage: storage });
