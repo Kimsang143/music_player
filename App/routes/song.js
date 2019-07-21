@@ -15,19 +15,15 @@ cloudinary.config({
 const storage = cloudinaryStorage({
     cloudinary: cloudinary,
     folder: "music",
-    allowedFormats: ["jpg", "png", "mp3","audio"]
+    allowedFormats: ["jpg", "png"]
 });
 
 const upload = multer({ storage: storage });
 
 router.get("/", SongsController.Songs_get_all);
 
-router.post("/", upload.any(), SongsController.Songs_create_Song);
-
 router.get("/:SongId", SongsController.Songs_get_Song);
 
-router.patch("/:SongId", upload.any() ,SongsController.Songs_update_Song);
 
-router.delete("/:SongId", SongsController.Songs_delete);
 
 module.exports = router;
